@@ -1,0 +1,10 @@
+{
+    "s3bucket": "kenserverlesstutorialfileupload",
+    "s3region": "us-east-1",
+    "apigatewayRegion": "us-east-1",
+    "apigatewayurl": "https://36edquesd9.execute-api.us-east-1.amazonaws.com/prod/",
+    "cognitoregion": "us-east-1",
+    "userpoolid": "us-east-1_t1vA4AHkl",
+    "appclientid": "gbumnnfc9htorf47fodsn9rs0",
+    "identitypoolid": "us-east-1:d8dcbb9a-3fa7-453e-89b8-d8634e63e72a"
+  }
