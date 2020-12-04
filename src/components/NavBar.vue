@@ -13,7 +13,7 @@
       <b-navbar-nav class="ml-auto">
         <router-link v-if="signedIn == false" to="/signup">Signup</router-link>
         <router-link v-if="signedIn == false" class="ml-3" to="/login">Login</router-link>
-        <router-link v-if="signedIn == true" class="ml-3" to="/login">Logout</router-link>
+        <button @click="logOut" v-if="signedIn == true" class="ml-3">Logout</button>
       
       </b-navbar-nav>
     </b-collapse>
@@ -22,7 +22,8 @@
 </template>
 
 <script>
-export default {
+  import { Auth } from 'aws-amplify';
+  export default {
   props: ['currentUser', 'isAuthenticated'],
   data(){
     return {
@@ -31,6 +32,13 @@ export default {
    computed: {
      signedIn() {
       return this.isAuthenticated;
+     }
+   },
+   methods:{
+    async logOut() {
+      console.log('button pressed')
+      await Auth.signOut();
+      this.$emit('loggingOut', false);
      }
    }
     

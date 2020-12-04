@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <b-container class="">
-      <NavBar :currentUser="this.currentUser" :isAuthenticated="isAuthenticated" > </NavBar>
-      <router-view @loggedinUser="setCurrentUser" :currentUser="this.currentUser" />
+      <NavBar :currentUser="this.currentUser" :isAuthenticated="isAuthenticated" @loggingOut="logout"> </NavBar>
+      <router-view @loggedinUser="setCurrentUser" :currentUser="this.currentUser"  />
     </b-container>
   </div>
 </template>
@@ -10,7 +10,7 @@
 <script>
 import Home from "./components/Home.vue";
 import NavBar from "./components/NavBar.vue";
-
+import { Auth } from 'aws-amplify';
 export default {
   name: "App",
   data(){
@@ -21,12 +21,33 @@ export default {
   },
   methods: {
      setCurrentUser(event) {
-       console.log('event', event)
        this.currentUser = event;
        this.$emit('loggedInUser', event)
        this.isAuthenticated = true
        this.$emit('isAuthenticated', this.isAuthenticated)
+    },
+    logout(event) {
+      console.log('should be false' , event)
+      this.isAuthenticated = false;
+      this.$router.push('/')
+    },
+    async onLoad(){
+      try {
+         await Auth.currentSession();
+          this.isAuthenticated = true;
+
+      }
+      catch(err) {
+        if (err == 'No current user') {
+        this.$router.push('/login')
+      }
+        console.log('on load error', err)
+        this.isAuthenticated = false;
+      }
     }
+  },
+  mounted() {
+    this.onLoad()
   },
   components: {
     Home,
