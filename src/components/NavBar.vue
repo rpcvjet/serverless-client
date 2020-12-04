@@ -11,8 +11,9 @@
 
       <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">
-        <router-link to="/signup">Signup</router-link>
-        <router-link class="ml-3" to="/login">Login</router-link>
+        <router-link v-if="signedIn == false" to="/signup">Signup</router-link>
+        <router-link v-if="signedIn == false" class="ml-3" to="/login">Login</router-link>
+        <router-link v-if="signedIn == true" class="ml-3" to="/login">Logout</router-link>
       
       </b-navbar-nav>
     </b-collapse>
@@ -22,6 +23,16 @@
 
 <script>
 export default {
+  props: ['currentUser', 'isAuthenticated'],
+  data(){
+    return {
+    }
+  },
+   computed: {
+     signedIn() {
+      return this.isAuthenticated;
+     }
+   }
     
 }
 </script>

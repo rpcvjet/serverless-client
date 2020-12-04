@@ -4,7 +4,10 @@ import BootstrapVue from 'bootstrap-vue';
 import VueRouter from 'vue-router'
 import routes from './routes';
 import Amplify from 'aws-amplify';
-import config from './awsconfig'
+import config from './awsconfig';
+import '@aws-amplify/ui-vue';
+import awsconfig from './aws-exports';
+Amplify.configure(awsconfig);
 
 Vue.use(Amplify)
 Vue.use(VueRouter);

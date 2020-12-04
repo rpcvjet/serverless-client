@@ -10,8 +10,9 @@
 </template>
 
 <script>
+
 export default {
-    
+  props: ['currentUser']
 }
 </script>
 
