@@ -2,7 +2,7 @@
   <div id="app">
     <b-container class="">
       <NavBar :currentUser="this.currentUser" :isAuthenticated="isAuthenticated" @loggingOut="logout"> </NavBar>
-      <router-view @loggedinUser="setCurrentUser" :currentUser="this.currentUser"  />
+      <router-view @loggedinUser="setCurrentUser" :currentUser="this.currentUser" :isAuthenticated="isAuthenticated"   />
     </b-container>
   </div>
 </template>
