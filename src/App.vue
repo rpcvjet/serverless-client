@@ -27,26 +27,24 @@ export default {
        this.$emit('isAuthenticated', this.isAuthenticated)
     },
     logout(event) {
-      console.log('should be false' , event)
       this.isAuthenticated = false;
-      this.$router.push('/')
+      this.$router.push('/login')
     },
     async onLoad(){
       try {
          await Auth.currentSession();
           this.isAuthenticated = true;
-
       }
       catch(err) {
         if (err == 'No current user') {
-        this.$router.push('/login')
+        // this.$router.push('/login')
       }
         console.log('on load error', err)
         this.isAuthenticated = false;
       }
     }
   },
-  mounted() {
+  created() {
     this.onLoad()
   },
   components: {

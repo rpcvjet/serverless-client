@@ -47,6 +47,19 @@ const router = new VueRouter({
     routes
 })
 
+router.beforeEach((to, from, next) => {
+  if (to.matched.some((record) => record.meta.requiresAuth )) {
+    if (!localStorage.getItem("amplify-signin-with-hostedUI")) {
+      next("/login");
+      return;
+    } else {
+      next()
+    }
+  } else {
+    next();
+  }
+});
+
 new Vue({
   router,
   render: h => h(App),

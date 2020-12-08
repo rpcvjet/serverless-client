@@ -2,6 +2,7 @@
   <div>
     <b-list-group>
       <h2 class="pb-3 mt-4 mb-3 border-bottom">Your Notes</h2>
+      
       <router-link to="/notes">
         <b-list-group-item action class="py-3 text-nowrap text-truncate">
           <span class="ml-2 font-weight-bold">Create a new note</span>

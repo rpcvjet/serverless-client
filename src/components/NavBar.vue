@@ -36,7 +36,6 @@
    },
    methods:{
     async logOut() {
-      console.log('button pressed')
       await Auth.signOut();
       this.$emit('loggingOut', false);
      }

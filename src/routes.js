@@ -6,11 +6,11 @@ import NewNote from './components/NewNote.vue';
 import NoteDetail from './components/NoteDetail.vue'
 
 const routes = [
-    {path: '/', component: Home},
+    {path: '/', component: Home, meta: {requiresAuth: true}},
     {path: '/login', component: Login},
     {path: '/signup', component: Signup},
-    {path: '/notes', component: NewNote},
-    {path: '/notes/:id', component: NoteDetail },
+    {path: '/notes', component: NewNote, meta: {requiresAuth: true}},
+    {path: '/notes/:id', component: NoteDetail, meta: {requiresAuth: true} },
     {path: '*', component: NotFound}
 ]
 

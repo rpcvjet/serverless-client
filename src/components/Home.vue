@@ -27,7 +27,6 @@ export default {
       }
       try{
         const notes = await this.loadNotes();
-        console.log('notes', notes)
         this.userNotes = notes;
       }
       catch(err){
@@ -38,7 +37,7 @@ export default {
       return API.get("notes", "notes");
     }
   },
-  mounted(){
+  created(){
     this.onLoad()
   },
   components: {
