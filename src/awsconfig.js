@@ -15,6 +15,7 @@ const config = {
       APP_CLIENT_ID: cloudconfig.appclientid,
       IDENTITY_POOL_ID: cloudconfig.identitypoolid,
     },
+    MAX_ATTACHMENT_SIZE: 5000000,
   };
   
   export default config;
